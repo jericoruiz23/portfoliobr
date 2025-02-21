@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.1976d7fb.css","mappings":"2FAEA,gBAGE,WAAY,CACZ,UACF","sources":["index.css"],"sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');\n\nhtml,\nbody,\n#root {\n  height: 100%;\n  width: 100%;\n}"],"names":[],"sourceRoot":""}
