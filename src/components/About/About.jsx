@@ -38,7 +38,7 @@ const ProfileImage = styled.img`
   
   &:hover {
     transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4);
+    // box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4);
   }
 
   &:after {

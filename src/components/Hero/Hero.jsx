@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-// Fonts are already imported in your project via:
-// <style>
-// @import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Extended+Text&family=Monomakh&display=swap');
-// </style>
-
 const HeroSection = styled.section`
   height: 100vh;
   display: flex;
@@ -45,7 +40,7 @@ const Title = styled(motion.h1)`
 
 const Subtitle = styled(motion.p)`
   font-size: 1.8rem;
-  font-family: "Oswald", serif;
+  font-family: "Bebas Neue", serif;
   color: #e0e0e0;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
   font-weight: 400; /* Matches Monomakh’s default */
@@ -53,6 +48,7 @@ const Subtitle = styled(motion.p)`
   @media (max-width: 768px) {
     font-size: 1.2rem;
   }
+  margin-top: 5rem;
 `;
 
 const Particle = styled(motion.div)`

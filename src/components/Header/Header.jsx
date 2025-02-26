@@ -40,13 +40,15 @@ const NavItem = styled.li`
     font-weight: 500;
     transition: color 0.3s;
     &:hover {
-      color:rgb(255, 255, 255);
+      color: rgb(255, 255, 255);
     }
   }
 `;
 
-const Logo = styled.h1`
-  margin-top: 1rem
+const Logo = styled(motion.img)`
+  height: 40px; /* Adjust size as needed */
+  width: auto;
+  margin-top: 0.5rem; /* Fine-tune positioning */
 `;
 
 const MenuButton = styled.button`
@@ -78,7 +80,13 @@ function Header() {
 
   return (
     <Nav as={motion.nav} isScrolled={isScrolled} initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.5 }}>
-      <Logo>Portfolio</Logo>
+      <Logo
+        src="https://raw.githubusercontent.com/jericoruiz23/portfolioAssets/main/logo_horizontal.png"
+        alt="BR Solutions Logo"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      />
       <MenuButton onClick={toggleMenu} aria-label="Toggle navigation menu">
         {isOpen ? '✖' : '☰'}
       </MenuButton>
