@@ -88,6 +88,8 @@ const TechIcon = styled.img`
   }
 `;
 
+
+
 function About() {
   const technologies = [
     { name: "JavaScript", src: "https://raw.githubusercontent.com/jericoruiz23/portfolioAssets/main/JavaScript.png" },
@@ -122,7 +124,9 @@ function About() {
         transition={{ duration: 1 }}
         viewport={{ once: true }}
       >
+
         {/* <ProfileImage src='https://raw.githubusercontent.com/jericoruiz23/portfolioAssets/main/profile.png' alt="Profile Photo" /> */}
+        <ProfileImage src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Blonde&facialHairType=BeardLight&facialHairColor=Blonde&clotheType=BlazerShirt&eyeType=WinkWacky&eyebrowType=Default&mouthType=Twinkle&skinColor=Light' alt="Profile Photo" />
       </PhotoContainer>
 
       <h3>Technologies I Work With</h3>

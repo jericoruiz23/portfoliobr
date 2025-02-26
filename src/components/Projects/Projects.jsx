@@ -20,6 +20,7 @@ const ProjectCard = styled(motion.div)`
   border-radius: 10px;
   backdrop-filter: blur(5px);
   transition: transform 0.3s;
+  position: relative; /* Added for absolute positioning of the image */
   &:hover {
     transform: translateY(-10px);
   }
@@ -40,12 +41,15 @@ const ProjectButton = styled.button`
 `;
 
 const ImageLink = styled.a`
+  padding: 0; /* Adjusted padding */
   display: inline-block;
   cursor: pointer;
 `;
 
 function Projects() {
-  const [expanded, setExpanded] = useState(null);
+  const [expandedEducation, setExpandedEducation] = useState(null);
+  const [expandedExperience, setExpandedExperience] = useState(null);
+  const [expandedCertifications, setExpandedCertifications] = useState(null);
 
   const projects = [
     { id: 1, title: "Software Engineering", desc: "Bachelor's Degree at Universidad de las Fuerzas Armadas ESPE 2019-2024" },
@@ -57,7 +61,7 @@ function Projects() {
     { id: 1, title: "Software Intern", desc: "Universidad de las Fuerzas Armadas ESPE", details: "Software management based on Wordpress and Hostinger, setup plugins and analytics. 2022" },
     { id: 2, title: "Frontend Web Dev Intern", desc: "CONSTECOIN CIA. LTDA.", details: "Frontend Web Dev at an IoT Software solution specialized in factory data management. ReactJS, NodeJS, MongoDB, Express" },
     { id: 3, title: "Jr Frontend Web Dev", desc: "CONSTECOIN CIA. LTDA.", details: "Software design for a panic button system using Figma. Create user-friendly interfaces to configure new offset database variables." },
-    { id: 4, title: "IBM Presales Engineer", desc: "NEXSYS del Ecuador", details: "Provide technical support to the sales team, including client follow-ups, continous training, and pre-purchase guidance." },
+    { id: 4, title: "IBM Presales Engineer", desc: "NEXSYS del Ecuador", details: "Provide technical support to the sales team, including client follow-ups, continuous training, and pre-purchase guidance." },
   ];
 
   const certifications = [
@@ -65,18 +69,26 @@ function Projects() {
     { id: 2, title: "Introduction to Cybersecurity", desc: "Cisco 2024", link: "https://www.credly.com/badges/d19daa13-b1cb-4f9d-81d4-e59c9d2cfcab/public_url" },
     { id: 3, title: "watsonx Assistant Sales Foundation", desc: "IBM 2024-2025", link: "https://www.credly.com/badges/5e85eebf-b9fc-4809-892d-10054d748c63/public_url" },
     { id: 4, title: "watsonx Assistant Technical Sales Intermediate", desc: "IBM" },
-    { id: 5, title: "Turbonomic by IBM Sales Foundation", desc: "IBM ", link: "https://www.credly.com/badges/5e85eebf-b9fc-4809-892d-10054d748c63/public_url" },
+    { id: 5, title: "Turbonomic by IBM Sales Foundation", desc: "IBM", link: "https://www.credly.com/badges/5e85eebf-b9fc-4809-892d-10054d748c63/public_url" },
     { id: 6, title: "Turbonomic by IBM Technical Sales Intermediate", desc: "IBM 2024-2025", link: "https://www.credly.com/badges/837d1382-f0ed-412c-ac9a-a6a2a6e3e888/public_url" },
     { id: 7, title: "Instana by IBM Sales Foundation", desc: "IBM 2024-2025" },
     { id: 8, title: "Instana by IBM Technical Sales Intermediate", desc: "IBM 2024-2025" },
   ];
 
-  const toggleExpand = (id) => {
-    setExpanded(expanded === id ? null : id);
+  const toggleExpandEducation = (id) => {
+    setExpandedEducation(expandedEducation === id ? null : id);
+  };
+
+  const toggleExpandExperience = (id) => {
+    setExpandedExperience(expandedExperience === id ? null : id);
+  };
+
+  const toggleExpandCertifications = (id) => {
+    setExpandedCertifications(expandedCertifications === id ? null : id);
   };
 
   return (
-    <ProjectsSection>
+    <ProjectsSection id="projects">
       <h2>Education</h2>
       <ProjectGrid>
         {projects.map((project) => (
@@ -89,7 +101,7 @@ function Projects() {
           >
             <h3>{project.title}</h3>
             <p>{project.desc}</p>
-            {expanded === project.id && <p>{project.details}</p>}
+            {/* Education doesn’t have details, so no button here */}
           </ProjectCard>
         ))}
       </ProjectGrid>
@@ -97,24 +109,24 @@ function Projects() {
 
       <h2>Experience</h2>
       <ProjectGrid>
-        {experience.map((experience) => (
+        {experience.map((exp) => (
           <ProjectCard
-            key={experience.id}
+            key={exp.id}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h3>{experience.title}</h3>
-            <p>{experience.desc}</p>
-            {expanded === experience.id && (
+            <h3>{exp.title}</h3>
+            <p>{exp.desc}</p>
+            {expandedExperience === exp.id && (
               <>
                 <br />
-                <p>{experience.details}</p>
+                <p>{exp.details}</p>
               </>
             )}
-            <ProjectButton onClick={() => toggleExpand(experience.id)}>
-              {expanded === experience.id ? 'Show Less' : 'Show More'}
+            <ProjectButton onClick={() => toggleExpandExperience(exp.id)}>
+              {expandedExperience === exp.id ? 'Show Less' : 'Show More'}
             </ProjectButton>
           </ProjectCard>
         ))}
@@ -123,34 +135,30 @@ function Projects() {
 
       <h2>Certifications</h2>
       <ProjectGrid>
-        {certifications.map((certification) => (
+        {certifications.map((cert) => (
           <ProjectCard
-            key={certification.id}
+            key={cert.id}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <div style={{ display: 'flex' }}>
-              <h3>{certification.title}</h3>
-              <ImageLink href="https://www.credly.com/badges/837d1382-f0ed-412c-ac9a-a6a2a6e3e888/public_url" target="_blank">
-                <img
-                  src="https://raw.githubusercontent.com/jericoruiz23/portfolioAssets/main/certificate1.png"
-                  alt="Clickable"
-                  style={{
-                    width: '30px',
-                    cursor: 'pointer',
-                    position: 'absolute',
-                    right: '1rem',  // 3px del margen derecho
-                    top: '2.5rem',
-                    transform: 'translateY(-50%)', // Centrar verticalmente
-                  }}
-                />
-              </ImageLink>
-
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <h3>{cert.title}</h3>
+              {cert.link && (
+                <ImageLink href={cert.link} target="_blank" rel="noopener noreferrer">
+                  <img
+                    src="https://raw.githubusercontent.com/jericoruiz23/portfolioAssets/main/certificate1.png"
+                    alt={`${cert.title} Certificate`}
+                    style={{
+                      width: '30px',
+                      cursor: 'pointer',
+                    }}
+                  />
+                </ImageLink>
+              )}
             </div>
-            <p>{certification.desc}</p>
-
+            <p>{cert.desc}</p>
           </ProjectCard>
         ))}
       </ProjectGrid>

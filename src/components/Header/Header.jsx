@@ -85,7 +85,7 @@ function Header() {
       <NavList isOpen={isOpen}>
         <NavItem><a href="#hero" onClick={toggleMenu}>Home</a></NavItem>
         <NavItem><a href="#about" onClick={toggleMenu}>About</a></NavItem>
-        <NavItem><a href="#projects" onClick={toggleMenu}>Projects</a></NavItem>
+        <NavItem><a href="#projects" onClick={toggleMenu}>Education</a></NavItem>
         <NavItem><a href="#contact" onClick={toggleMenu}>Contact</a></NavItem>
       </NavList>
     </Nav>
