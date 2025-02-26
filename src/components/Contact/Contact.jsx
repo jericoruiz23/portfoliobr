@@ -40,9 +40,9 @@ const TickerItem = styled(motion.a)`
 
 function Contact() {
   const tickerContent = [
-    { text: 'Email: your-email@example.com', href: 'mailto:benjamin.ruiz2331@gmail.com' },
-    { text: 'LinkedIn: /in/your-profile', href: 'https://www.linkedin.com/in/jerico-ruiz-048b86221' },
-    { text: 'Twitter: @your-handle', href: 'https://twitter.com/--------' },
+    { text: 'Email: benjamin.ruiz2331@gmail.com', href: 'mailto:benjamin.ruiz2331@gmail.com' },
+    { text: 'LinkedIn: www.linkedin.com/in/jerico-ruiz-048b86221', href: 'https://www.linkedin.com/in/jerico-ruiz-048b86221' },
+    { text: 'Twitter: -------', href: 'https://twitter.com/--------' },
   ];
 
   const tickerVariants = {
