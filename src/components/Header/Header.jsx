@@ -19,7 +19,7 @@ const Nav = styled.nav`
 
 const NavList = styled.ul`
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
   list-style: none;
   @media (max-width: 768px) {
     display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
@@ -37,6 +37,8 @@ const NavItem = styled.li`
   a {
     color: #00d4ff;
     text-decoration: none;
+    font-family: "Bebas Neue", serif;
+    font-size: 1.2rem;
     font-weight: 500;
     transition: color 0.3s;
     &:hover {
@@ -80,13 +82,15 @@ function Header() {
 
   return (
     <Nav as={motion.nav} isScrolled={isScrolled} initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.5 }}>
-      <Logo
-        src="https://raw.githubusercontent.com/jericoruiz23/portfolioAssets/main/logo_horizontal.png"
-        alt="BR Solutions Logo"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      />
+      <a href="#hero">
+        <Logo
+          src="https://raw.githubusercontent.com/jericoruiz23/portfolioAssets/main/logo_horizontal.png"
+          alt="BR Solutions Logo"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        />
+      </a>
       <MenuButton onClick={toggleMenu} aria-label="Toggle navigation menu">
         {isOpen ? '✖' : '☰'}
       </MenuButton>

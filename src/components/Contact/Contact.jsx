@@ -1,99 +1,70 @@
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { Mail, Linkedin, Twitter } from 'lucide-react';
 
-const ContactSection = styled.section`
-  padding: 4rem 2rem;
+const ContactContainer = styled.div`
+  padding: 2rem 1rem;
+  color: #fff;
+  background:rgba(13, 13, 13, 0.27);
   text-align: center;
-  color: #e0e0e0;
-  position: relative;
 `;
 
-const TickerWrapper = styled(motion.div)`
-  max-width: 800px;
-  margin: 2rem auto;
-  background: #1a1a2e;
-  border: 2px solid #00d4ff;
-  border-radius: 5px;
-  overflow: hidden;
-  padding: 1rem;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+const ContactHeading = styled.h2`
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
 `;
 
-const TickerTape = styled(motion.div)`
+const ContactDescription = styled.p`
+  font-size: 1.2rem;
+  opacity: 0.8;
+  margin-bottom: 2rem;
+`;
+
+const ContactList = styled.div`
   display: flex;
-  white-space: nowrap;
-  font-size: 1.5rem;
-  font-family: 'Courier New', monospace; /* Techy font, swap with your Monomakh if preferred */
-  color: #00d4ff;
-  text-transform: uppercase;
+  justify-content: center;
+  gap: 2rem;
 `;
 
-const TickerItem = styled(motion.a)`
-  margin: 0 2rem;
-  color: #00d4ff;
+const ContactItem = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  color: #fff;
   text-decoration: none;
   transition: color 0.3s;
+
   &:hover {
-    color: #ff007a;
+    color: #1db954;
   }
 `;
 
 function Contact() {
-  const tickerContent = [
-    { text: 'Email: benjamin.ruiz2331@gmail.com', href: 'mailto:benjamin.ruiz2331@gmail.com' },
-    { text: 'LinkedIn: www.linkedin.com/in/jerico-ruiz-048b86221', href: 'https://www.linkedin.com/in/jerico-ruiz-048b86221' },
-    { text: 'Twitter: -------', href: 'https://twitter.com/--------' },
+  const contacts = [
+    { text: 'Email', href: 'mailto:benjamin.ruiz2331@gmail.com', icon: <Mail size={24} /> },
+    { text: 'LinkedIn', href: 'https://www.linkedin.com/in/benjamin-ruiz-048b86221/', icon: <Linkedin size={24} /> },
+    { text: 'Twitter', href: 'https://twitter.com/--------', icon: <Twitter size={24} /> },
   ];
 
-  const tickerVariants = {
-    animate: {
-      x: ['0%', '-100%'],
-      transition: {
-        x: {
-          repeat: Infinity,
-          repeatType: 'loop',
-          duration: 15, // Adjust speed here
-          ease: 'linear',
-        },
-      },
-    },
-  };
-
   return (
-    <ContactSection id="contact">
-      <h2>Contact Me</h2>
-      <TickerWrapper
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-        whileHover={{ boxShadow: '0 0 30px rgba(0, 212, 255, 0.5)' }}
-      >
-        <TickerTape variants={tickerVariants} animate="animate">
-          {tickerContent.map((item, index) => (
-            <TickerItem
-              key={index}
-              href={item.href}
-              target={item.href.startsWith('http') ? '_blank' : '_self'}
-              rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-            >
-              {item.text}
-            </TickerItem>
-          ))}
-          {/* Duplicate for seamless looping */}
-          {tickerContent.map((item, index) => (
-            <TickerItem
-              key={`duplicate-${index}`}
-              href={item.href}
-              target={item.href.startsWith('http') ? '_blank' : '_self'}
-              rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-            >
-              {item.text}
-            </TickerItem>
-          ))}
-        </TickerTape>
-      </TickerWrapper>
-    </ContactSection>
+    <ContactContainer id="contact">
+      <ContactHeading>Get in Touch</ContactHeading>
+      <ContactDescription>Feel free to reach out through any of these platforms.</ContactDescription>
+      <ContactList>
+        {contacts.map((item, index) => (
+          <ContactItem
+            key={index}
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {item.icon}
+            {item.text}
+          </ContactItem>
+        ))}
+      </ContactList>
+    </ContactContainer>
   );
 }
 

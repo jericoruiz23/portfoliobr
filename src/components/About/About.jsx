@@ -104,7 +104,7 @@ function About() {
 
   return (
     <AboutSection id="about">
-      <h2>About Me</h2>
+      <h2 style={{"font-family": "Bebas Neue", fontSize:'1.75rem'}}>About Me</h2>
       <AboutText
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -129,7 +129,7 @@ function About() {
         <ProfileImage src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=Blonde&facialHairType=BeardLight&facialHairColor=Blonde&clotheType=BlazerShirt&eyeType=WinkWacky&eyebrowType=Default&mouthType=Twinkle&skinColor=Light' alt="Profile Photo" />
       </PhotoContainer>
 
-      <h3>Technologies I Work With</h3>
+      <h3 style={{ fontFamily: "Bebas Neue", fontSize:'1.75rem' }}>Technologies | Work With</h3>
       <TechContainer
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

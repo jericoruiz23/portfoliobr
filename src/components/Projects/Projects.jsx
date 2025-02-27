@@ -47,9 +47,9 @@ const ImageLink = styled.a`
 `;
 
 function Projects() {
-  const [expandedEducation, setExpandedEducation] = useState(null);
+  // const [expandedEducation, setExpandedEducation] = useState(null);
   const [expandedExperience, setExpandedExperience] = useState(null);
-  const [expandedCertifications, setExpandedCertifications] = useState(null);
+  // const [expandedCertifications, setExpandedCertifications] = useState(null);
 
   const projects = [
     { id: 1, title: "Software Engineering", desc: "Bachelor's Degree at Universidad de las Fuerzas Armadas ESPE 2019-2024" },
@@ -75,21 +75,21 @@ function Projects() {
     { id: 8, title: "Instana by IBM Technical Sales Intermediate", desc: "IBM 2024-2025" },
   ];
 
-  const toggleExpandEducation = (id) => {
-    setExpandedEducation(expandedEducation === id ? null : id);
-  };
+  // const toggleExpandEducation = (id) => {
+  //   setExpandedEducation(expandedEducation === id ? null : id);
+  // };
 
   const toggleExpandExperience = (id) => {
     setExpandedExperience(expandedExperience === id ? null : id);
   };
 
-  const toggleExpandCertifications = (id) => {
-    setExpandedCertifications(expandedCertifications === id ? null : id);
-  };
+  // const toggleExpandCertifications = (id) => {
+  //   setExpandedCertifications(expandedCertifications === id ? null : id);
+  // };
 
   return (
     <ProjectsSection id="projects">
-      <h2>Education</h2>
+      <h2 style={{ fontFamily: "Bebas Neue", fontSize:'1.75rem' }}>Education</h2>
       <ProjectGrid>
         {projects.map((project) => (
           <ProjectCard
@@ -107,7 +107,7 @@ function Projects() {
       </ProjectGrid>
       <br />
 
-      <h2>Experience</h2>
+      <h2 style={{ fontFamily: "Bebas Neue", fontSize:'1.75rem' }}>Experience</h2>
       <ProjectGrid>
         {experience.map((exp) => (
           <ProjectCard
@@ -133,7 +133,7 @@ function Projects() {
       </ProjectGrid>
       <br />
 
-      <h2>Certifications</h2>
+      <h2 style={{ fontFamily: "Bebas Neue", fontSize:'1.75rem' }}>Certifications</h2>
       <ProjectGrid>
         {certifications.map((cert) => (
           <ProjectCard
@@ -143,21 +143,23 @@ function Projects() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <h3>{cert.title}</h3>
-              {cert.link && (
-                <ImageLink href={cert.link} target="_blank" rel="noopener noreferrer">
-                  <img
-                    src="https://raw.githubusercontent.com/jericoruiz23/portfolioAssets/main/certificate1.png"
-                    alt={`${cert.title} Certificate`}
-                    style={{
-                      width: '30px',
-                      cursor: 'pointer',
-                    }}
-                  />
-                </ImageLink>
-              )}
-            </div>
+            <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
+  <h3 style={{ margin: 0 }}>{cert.title}</h3>
+  {cert.link && (
+    <ImageLink href={cert.link} target="_blank" rel="noopener noreferrer">
+      <img
+        src="https://raw.githubusercontent.com/jericoruiz23/portfolioAssets/main/certificate1.png"
+        alt={`${cert.title} Certificate`}
+        style={{
+          width: '30px',
+          cursor: 'pointer',
+          verticalAlign: 'middle'
+        }}
+      />
+    </ImageLink>
+  )}
+</div>
+
             <p>{cert.desc}</p>
           </ProjectCard>
         ))}

@@ -10,7 +10,7 @@ const FooterStyled = styled.footer`
 function Footer() {
     return (
         <FooterStyled>
-            <p>© 2025 JR. All rights reserved.</p>
+            <p>© 2025 BR. All rights reserved.</p>
         </FooterStyled>
     );
 }
